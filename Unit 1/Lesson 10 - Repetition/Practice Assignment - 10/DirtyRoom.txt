@@ -1,0 +1,24 @@
+Room
+0 0 10 10
+20
+
+becker.robots.Wall 0 0 Direction.NORTH
+becker.robots.Wall 0 1 Direction.NORTH
+becker.robots.Wall 0 2 Direction.NORTH
+becker.robots.Wall 0 3 Direction.NORTH
+becker.robots.Wall 0 4 Direction.NORTH
+becker.robots.Wall 0 4 Direction.EAST
+becker.robots.Wall 1 4 Direction.EAST
+becker.robots.Wall 2 4 Direction.EAST
+becker.robots.Wall 3 4 Direction.EAST
+becker.robots.Wall 3 4 Direction.SOUTH
+becker.robots.Wall 3 3 Direction.SOUTH
+becker.robots.Wall 3 2 Direction.SOUTH
+becker.robots.Wall 3 1 Direction.SOUTH
+becker.robots.Wall 3 0 Direction.SOUTH
+becker.robots.Wall 3 0 Direction.WEST
+becker.robots.Wall 2 0 Direction.WEST
+becker.robots.Wall 1 0 Direction.WEST
+becker.robots.Wall 0 0 Direction.WEST
+
+

@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/shahrukh/Desktop/Work/Grade 12/Computer Science/Unit 1/Lesson 3 - Inheritance/Practice-Assignment-3/**/*.jar"
+    ]
+}

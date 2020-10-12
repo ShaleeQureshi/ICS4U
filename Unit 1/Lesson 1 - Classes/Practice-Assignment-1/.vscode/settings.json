@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/shahrukh/Desktop/Work/Grade 12/Computer Science/Unit 1/Lesson 1 - Classes/Practice-Assignment-1/**/*.jar"
+    ]
+}
