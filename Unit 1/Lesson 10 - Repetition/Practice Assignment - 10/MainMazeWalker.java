@@ -20,8 +20,8 @@ public class MainMazeWalker {
     public static void main(String[] args) {
 
         // Making the maze randomly sized (between 2-10 streets/avenues)
-        int streetNum = (int) (Math.random() * 10);
-        int avenueNum = (int) (Math.random() * 10);
+        int streetNum = (int) (Math.random() * 10) + 2;
+        int avenueNum = (int) (Math.random() * 10) + 2;
 
         // Instantiating Objects
         MazeCity mazeCity = new MazeCity(streetNum, avenueNum);
