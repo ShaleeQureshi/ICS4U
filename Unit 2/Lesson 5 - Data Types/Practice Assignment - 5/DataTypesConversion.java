@@ -19,6 +19,11 @@ public class DataTypesConversion {
         // Prompting user for a Binary number
         String binaryNum = Prompt.askString("Please enter the Binary Number");
 
+        // If the binary number is not divisible by 8 we concatenate a 0 at the end
+        while (binaryNum.length() % 8 != 0) {
+            binaryNum = binaryNum + 0;
+        } // while loop
+
         String word = ""; // The word (this value will store the final converted value)
 
         // Declaring a String array to hold the broken up 8 bits (8 digits)

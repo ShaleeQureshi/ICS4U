@@ -1,15 +1,19 @@
 
 /*
-* Date: October 20, 2020
+* Last Modified: October 26, 2020
 * Author: Shalee (Shahrukh) Qureshi
 * Description: This class contains various services to help with Input/Output Operations
 *
-* Method List: 
+* Direct User I/O Operation Methods: 
+* 1. static int getInt(String prompt) = This method prompts the user for an Integer
+* 2. static int getInt(String prompt, int lowVal, int highVal) = This method prompts the user for an integer that must be within a certain range
+* 3. static String getString(String prompt) = This method prompts the user for a String
+*
+* File I/O Operation Methods:
 * 1. static File getInputFile(String fileName) = This method ensures that the specified file in prompt is readable
 * 2. static Scanner getInputScanner(String prompt) = This method opens a specified file using Scanner
 * 3. static PrintWriter getPrintWriter(String prompt) = This method prompts user for a fileName
 * 4. static String readFile(Scanner userScanner) = This method reads from a file
-* 5. static int askNum (String prompt) = This method prompts the user for an integer
 *
 */
 // Import Statements
@@ -33,7 +37,7 @@ public class Prompt {
     public static File getInputFile(String prompt) {
 
         while (true) {
-            String getFile = askString(prompt);
+            String getFile = getString(prompt);
             file = new File(getFile); // Passing the fileName to the File Constructor
             // If the file is readable the following will occur
             if (file.canRead()) {
@@ -41,7 +45,7 @@ public class Prompt {
             } else {
                 System.out.println(file.getName() + " is not readable!");
             }
-        }
+        } // while loop
 
     } // getInputFile Method
 
@@ -51,11 +55,11 @@ public class Prompt {
      * @param prompt
      * @return returns the Scanner Object
      */
-    public static Scanner getInputScanner(File userFile) {
+    public static Scanner getInputScanner(String fileName) {
 
         // Try-Catch Statement to handle possible errors
         try {
-            return new Scanner(userFile); // Returning the Scanner Object with a File
+            return new Scanner(getInputFile(fileName)); // Returning the Scanner Object with a File
         }
         // If there is an error the following will occur
         catch (FileNotFoundException error) {
@@ -74,11 +78,11 @@ public class Prompt {
      * @param prompt
      * @return the PrintWriter Object
      */
-    public static PrintWriter getPrintWriter(File userFile) {
+    public static PrintWriter getPrintWriter(String fileName) {
 
         // Try-Catch Statement to handle possible errors
         try {
-            return new PrintWriter(userFile); // Returning the PrintWriter Object
+            return new PrintWriter(getInputFile(fileName)); // Returning the PrintWriter Object
         }
         // If there is an error the following will occur
         catch (FileNotFoundException error) {
@@ -103,7 +107,7 @@ public class Prompt {
 
         while (userScanner.hasNextLine()) {
             data = userScanner.nextLine();
-        }
+        } // while loop
         userScanner.close();
         return data;
 
@@ -112,11 +116,12 @@ public class Prompt {
     /**
      * This method prompts the user for an integer
      * 
-     * @return the integer value entered
+     * @param prompt
+     * @return
      */
-    public static int askInt(String prompt) {
+    public static int getInt(String prompt) {
 
-        input = new Scanner(System.in);
+        input = new Scanner(System.in); // Initializing Scanner Object
 
         while (true) {
             System.out.println(prompt); // Prompting User
@@ -130,46 +135,58 @@ public class Prompt {
                 String userInput = input.nextLine();
                 System.out.println("Error:" + userInput + " is not an integer.");
             }
-        }
+        } // while loop
 
-    } // askInt Method
-
-    public static String askString(String prompt) {
-
-        input = new Scanner(System.in);
-        System.out.println(prompt);
-        return input.nextLine();
-
-    } // askString Method
+    } // getInt Method
 
     /**
-     * This method tests each service in this class
+     * This method prompts the user for an integer that must be within a certain
+     * range
      * 
-     * @param args
+     * @param prompt
+     * @param lowVal
+     * @param highVal
+     * @return the integer value entered that is within a certain range
      */
-    public static void main(String[] args) {
+    public static int getInt(String prompt, int lowVal, int highVal) {
 
-        String testFile = "TestFile.txt"; // Test File for File manipulation tests
+        input = new Scanner(System.in); // Initializing Scanner Object
 
-        // Testing static File getInputFile(String prompt)
-        if (getInputFile(testFile) != null) {
-            System.out.println("getInputFile Test Successful");
-        } else {
-            System.out.println("getInputFile Test Failed");
-        }
-        // Testing static Scanner getInputScanner(String prompt)
-        if (getInputScanner(getInputFile(testFile)) != null) {
-            System.out.println("getInputScanner Test Successful");
-        } else {
-            System.out.println("getInputScanner Test Failed");
-        }
-        // Testing static PrintWriter getPrintWriter(String prompt)
-        if (getPrintWriter(new File(testFile)) != null) {
-            System.out.println("getPrintWriter Test Successful");
-        } else {
-            System.out.println("getPrintWriter Test Failed");
-        }
+        while (true) {
+            System.out.println(prompt); // Prompting User
+            if (input.hasNextInt()) {
+                int answer = input.nextInt(); // Storing the integer value
+                input.nextLine();
+                // If the int value is within the given range the following will occur
+                if (answer > lowVal && answer < highVal) {
+                    return answer; // Returning the value
+                }
+                // If the int value is not within the given range the following will occur
+                else {
+                    System.out
+                            .println("Error: " + answer + " is not within the range of " + lowVal + " and " + highVal);
+                }
+            } else {
+                // Invalid data type entered
+                String userInput = input.nextLine();
+                System.out.println("Error: " + userInput + " is not an integer.");
+            }
+        } // while loop
 
-    } // main Method
+    } // getInt Method
+
+    /**
+     * This method prompts the user for a String
+     * 
+     * @param prompt
+     * @return the String value entered
+     */
+    public static String getString(String prompt) {
+
+        input = new Scanner(System.in); // Initializing Scanner Object
+        System.out.println(prompt); // Prompting User
+        return input.nextLine(); // Returning User Input
+
+    } // getString Method
 
 } // Prompt Class
