@@ -55,11 +55,11 @@ public class Prompt {
      * @param prompt
      * @return returns the Scanner Object
      */
-    public static Scanner getInputScanner(String fileName) {
+    public static Scanner getInputScanner(File fileName) {
 
         // Try-Catch Statement to handle possible errors
         try {
-            return new Scanner(getInputFile(fileName)); // Returning the Scanner Object with a File
+            return new Scanner(fileName); // Returning the Scanner Object with a File
         }
         // If there is an error the following will occur
         catch (FileNotFoundException error) {
@@ -82,7 +82,7 @@ public class Prompt {
 
         // Try-Catch Statement to handle possible errors
         try {
-            return new PrintWriter(getInputFile(fileName)); // Returning the PrintWriter Object
+            return new PrintWriter(new File(fileName)); // Returning the PrintWriter Object
         }
         // If there is an error the following will occur
         catch (FileNotFoundException error) {
