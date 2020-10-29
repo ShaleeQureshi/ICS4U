@@ -28,7 +28,7 @@ public class Question1A {
         // Instantiating Objects
         JFrame frame = new JFrame("Created by Shahrukh Qureshi");
         BorderLayout layoutContents = new BorderLayout();
-        JPanel panelContents = new JPanel(layoutContents);
+        JPanel panelContents = new JPanel();
         JPanel panelCheckBoxes = new JPanel();
         JPanel panelSliders = new JPanel();
         BoxLayout checkBoxLayout = new BoxLayout(panelCheckBoxes, BoxLayout.Y_AXIS);
