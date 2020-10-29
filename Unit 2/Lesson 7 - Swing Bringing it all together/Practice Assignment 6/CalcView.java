@@ -5,22 +5,27 @@
 * Description: This class creates the View for the Calculator
 *
 * Constructor List:
-* 1. ArrayStats(int[] userArray)
+* 1. CalcView(CalcModel model)
 *
 * Method List:
 * 1. private void layoutView() = This method creates the initial layout for the Calculator
+* 2. private void initializeControllers() = This method initializes the controllers
+* 3. public void update() = This method updates the UI
 *
 */
 // Import Statements
 import java.awt.BorderLayout;
-
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class CalcView extends JPanel {
+
+    /**
+     * For serializable classes
+     */
+    private static final long serialVersionUID = -7552490454311912434L;
 
     // Instance Variables
     private JLabel lblInput1 = new JLabel("Num 1");
@@ -32,9 +37,19 @@ public class CalcView extends JPanel {
     private JButton btnMinus = new JButton("-");
     private JButton btnDivide = new JButton("÷");
     private JButton btnMultiply = new JButton("x");
+    private CalcModel calcModel;
 
-    public CalcView() {
+    /**
+     * This is the CalcModel Constructor
+     * 
+     * @param model
+     */
+    public CalcView(CalcModel model) {
+        super();
+        this.calcModel = model;
+        this.calcModel.setGUI(this);
         this.layoutView();
+        this.initializeControllers();
     } // CalcView Constructor
 
     /**
@@ -68,15 +83,43 @@ public class CalcView extends JPanel {
 
     } // layout Method
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        CalcView panel = new CalcView();
-        frame.setSize(300, 150);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(panel);
-        frame.setVisible(true);
-    }
+    /**
+     * This method initializes the controllers
+     */
+    private void initializeControllers() {
+
+        // Controller for btnPlus
+        CalcControllers btnPlusController = new CalcControllers(this.calcModel, this.txtInput1, this.txtInput2);
+        this.btnPlus.addActionListener(btnPlusController);
+
+        // Controller for btnMinus
+        CalcControllers btnMinusController = new CalcControllers(this.calcModel, this.txtInput1, this.txtInput2);
+        this.btnMinus.addActionListener(btnMinusController);
+
+        // Controller for btnDivide
+        CalcControllers btnDivideController = new CalcControllers(this.calcModel, this.txtInput1, this.txtInput2);
+        this.btnDivide.addActionListener(btnDivideController);
+
+        // Controller for btnMultiply
+        CalcControllers btnMultiplyController = new CalcControllers(this.calcModel, this.txtInput1, this.txtInput2);
+        this.btnMultiply.addActionListener(btnMultiplyController);
+
+    } // initializeControllers Method
+
+    /**
+     * This method updates the UI
+     */
+    public void update() {
+        double val = this.calcModel.getAnswer();
+        // If the value is an integer (e.g. 1.0 is the same as 1) the following will
+        // occur
+        if ((int) val == val) {
+            this.lblResult.setText("Answer: " + (int) val); // Outputting the int value
+        }
+        // If the value is not an int (floating point) the following will occur
+        else {
+            this.lblResult.setText("Answer: " + val); // Outputting the floating point value
+        }
+    } // update Method
 
 } // CalcView Class
