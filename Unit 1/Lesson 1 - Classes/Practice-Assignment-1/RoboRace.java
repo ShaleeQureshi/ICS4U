@@ -1,6 +1,6 @@
 
 /*
-* Date: September 25, 2020
+* Last Modified: September 25, 2020
 * Author: Shalee (Shahrukh) Qureshi
 * Description: Creates a program that has two robots begin at certain positions and end at certain positions
 *
