@@ -1,49 +1,33 @@
-import java.util.concurrent.TimeUnit;
-
 /*
 * Last Modified: November 5, 2020
 * Author: Shalee (Shahrukh) Qureshi
 * Description: This class contains the solution to Question 2
 *
 * Method List:
-* 1. public static int[] bubbleSortAscending(int[] a) = This method sorts an array in Ascending order using BubbleSort
-* 2. public static int[] bubbleSortDecending(int[] a) = This method sorts an array in Decending order using BubbleSort
-* 3. public static int[] selectionSortAscending(int[] a) = This method sorts an array in Ascending order using SelectionSort
-* 4. public static int[] selectionSortDecending(int[] a) = This method sorts an array in Decending order using SelectionSort
-* 5. public static int[] insertionSortAscending(int[] a) = This method sorts an array in Ascending order using InsertionSort
-* 6. public static int[] insertionSortDecending(int[] a) = This method sorts an array in Decending order using InsertionSort
+* 1. public static void main(String[] args) = This method runs the entire program
 *
 * Helper Methods List:
-* 1. private static String testAscending(int[] a) = This method tests the Ascending Algorithms
-* 2. private static String testDecending(int[] a) = This method tests the Decending Algorithms
+* 1. private static int[] createArray(int n) = This helper method creates an array with n random elements
 *
-*
-* Main Method can be founs at the bottom of the file to test the Algorithms
 *
 */
 
 public class Question2 {
 
     /**
-     * This helper method creates an array with 10000 random elements
+     * This helper method creates an array with n random elements
      * 
-     * @return
+     * @param n
+     * @return the array with randomized elements
      */
-    private static int[] createArray(int size) {
-        int[] array = new int[size];
+    private static int[] createArray(int n) {
+        int[] array = new int[n];
         // Loop to iterate through the array
         for (int i = 0; i < array.length; i++) {
-            array[i] = (int) (Math.random() * size); // Adding random values to the array
+            array[i] = (int) (Math.random() * n); // Adding random values to the array
         } // for loop
         return array;
     } // createArray Method
-
-    private static void printArray(int[] array) {
-        // Loop to iterate through the array
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
-        } // for loop
-    } // printArray Method
 
     /**
      * This method runs the entire program

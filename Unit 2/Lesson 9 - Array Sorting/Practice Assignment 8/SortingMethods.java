@@ -10,6 +10,7 @@
 * 4. public static int[] selectionSortDecending(int[] a) = This method sorts an array in Decending order using SelectionSort
 * 5. public static int[] insertionSortAscending(int[] a) = This method sorts an array in Ascending order using InsertionSort
 * 6. public static int[] insertionSortDecending(int[] a) = This method sorts an array in Decending order using InsertionSort
+* 7. public static int[] oddEvenSort(int[] array) = This method sorts an array starting with the even values then the odd values
 *
 * Helper Methods List:
 * 1. private static String testAscending(int[] a) = This method tests the Ascending Algorithms
@@ -260,6 +261,45 @@ public class SortingMethods {
      } // insertionSortDecending Method
 
      /**
+      * This method sorts an array starting with the even values then the odd values
+      * 
+      * @param array
+      * @return the sorted array
+      */
+     public static int[] oddEvenSort(int[] array) {
+
+          // Loop to traverse the entire array
+          for (int i = 0; i < array.length; i++) {
+               // Loop to traverse the entire array - 1
+               for (int j = 0; j < array.length - 1; j++) {
+                    // If the current index is greater than the index ahead the following will occur
+                    if (array[j] > array[j + 1]) {
+                         // If the current value is an even number the following will occur
+                         if (array[i] % 2 == 0) {
+                              // Swapping the values
+                              int temp = array[j];
+                              array[j] = array[j + 1];
+                              array[j + 1] = temp;
+                         }
+                         // If the current value is an odd number the following will occur
+                         else {
+                              // Swapping the values
+                              int temp = array[j];
+                              array[j] = array[j + 1];
+                              array[j + 1] = temp;
+                         }
+                    }
+               } // for loop
+
+          } // for loop
+
+          return array; // Returing the sorted data
+
+     } // oddEvenSort Method
+
+     // Helper Methods
+
+     /**
       * This method tests the Ascending Algorithms
       * 
       * @param a
@@ -305,6 +345,12 @@ public class SortingMethods {
           // Testing InsertionSort Methods
           System.out.println("InsertionSort Ascending - " + testAscending(insertionSortAscending(array)));
           System.out.println("InsertionSort Decending - " + testDecending(insertionSortDecending(array)));
+
+          // Outputting the result from the oddEvenSort Method
+          int[] newArray = oddEvenSort(array);
+          for (int i = 0; i < newArray.length; i++) {
+               System.out.println(newArray[i]);
+          }
 
      } // main Method
 
