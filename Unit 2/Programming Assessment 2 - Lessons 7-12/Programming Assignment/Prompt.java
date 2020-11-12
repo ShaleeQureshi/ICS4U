@@ -7,7 +7,8 @@
 * Direct User I/O Operation Methods: 
 * 1. static int getInt(String prompt) = This method prompts the user for an Integer
 * 2. static int getInt(String prompt, int lowVal, int highVal) = This method prompts the user for an integer that must be within a certain range
-* 3. static String getString(String prompt) = This method prompts the user for a String
+* 3. static float getFloat(String prompt, float lowVal, float highVal) = This method asks the user for a floating point value in a specific range
+* 4. static String getString(String prompt) = This method prompts the user for a String
 *
 * File I/O Operation Methods:
 * 1. static File getInputFile(String fileName) = This method ensures that the specified file in prompt is readable
@@ -174,6 +175,40 @@ public class Prompt {
         } // while loop
 
     } // getInt Method
+
+    /**
+     * This method asks the user for a floating point value in a specific range
+     * 
+     * @param prompt
+     * @param lowVal
+     * @param highVal
+     * @return the float
+     */
+    public static float getFloat(String prompt, float lowVal, float highVal) {
+        input = new Scanner(System.in); // Initializing Scanner Object
+
+        while (true) {
+            System.out.println(prompt); // Prompting User
+            if (input.hasNextFloat()) {
+                float answer = input.nextFloat(); // Storing the float value
+                input.nextLine();
+                // If the value is within the given range the following will occur
+                if (answer > lowVal && answer < highVal) {
+                    return answer; // Returning the value
+                }
+                // If the value is not within the given range the following will occur
+                else {
+                    System.out
+                            .println("Error: " + answer + " is not within the range of " + lowVal + " and " + highVal);
+                }
+            } else {
+                // Invalid data type entered
+                String userInput = input.nextLine();
+                System.out.println("Error: " + userInput + " is not a float.");
+            }
+        } // while loop
+
+    } // getFloat Method
 
     /**
      * This method prompts the user for a String

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Test {
 
-    public static ArrayList<Integer> AbubbleSortAscending(HashSet<Integer> a) {
+    public static ArrayList<Integer> bubbleSortAscending(HashSet<Integer> a) {
         ArrayList<Integer> array = new ArrayList<Integer>(a);
         int arrayLength = array.size() - 1; // Placeholder value for the array's length - 1
         boolean continueLoop; // Flag
@@ -52,10 +52,11 @@ public class Test {
         }
         System.out.println();
         System.out.println("Sorted");
-        ArrayList<Integer> newArray = AbubbleSortAscending(intList);
+        ArrayList<Integer> newArray = bubbleSortAscending(intList);
         for (Integer integer : newArray) {
             System.out.print(integer + " ");
         }
-
+        float val = Prompt.getFloat("Please enter your mark between 0-100%", -1, 101);
+        System.out.println(val);
     }
 }
