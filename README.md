@@ -1,2 +1,1 @@
-# All of my work is clearly specified with headings.
-# Any of the code in this repository that does not belong to me is clearly specified.
+# View final course proeject here: https://github.com/ShaleeQureshi/TicTacToe-2.0
